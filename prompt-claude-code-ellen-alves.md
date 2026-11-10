@@ -51,6 +51,7 @@ Layout por seção:
 - Sem animação de entrada nas seções: o único movimento automático da página são os anéis.
 
 ### 2. Regras gerais
+- **Todo o texto do site fica centralizado, no desktop e no celular.** Seções que antes tinham texto em duas colunas (Antes de mais nada, FAQ e topo do Local de atendimento) viram uma coluna central de até 820px. No hero, no Método e no Sobre, a foto ou o card continuam ao lado, mas o texto da coluna fica centralizado. Os marcadores das listas ficam na mesma linha do texto, as linhas do card da consulta ficam empilhadas (rótulo em cima, valor embaixo) e os depoimentos mostram foto, nome e tema centralizados. No FAQ, a pergunta fica centralizada, com o "+" fixo à direita.
 - **Não use efeito hover em cards nem em itens que não tenham ação.** Hover só em botões, links e nas perguntas do FAQ.
 - Todos os botões de agendamento abrem o WhatsApp em nova aba:
   `https://wa.me/5561991481192?text=Ol%C3%A1.%20Gostaria%20de%20agendar%20uma%20consulta%20de%20hipnoterapia.`
