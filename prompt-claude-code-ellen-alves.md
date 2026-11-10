@@ -1,6 +1,6 @@
 # Prompt para o Claude Code — Landing page Ellen Álves (Hipnoterapia / Ansiedade)
 
-> **Como usar:** crie uma pasta para o projeto, coloque dentro dela uma subpasta `fotos/` com `ellen-hero.jpg` (foto principal) e `ellen-sobre.jpg` (foto da seção "Quem vai te atender") e as 5 fotos `consultorio-*.jpg` (galeria do consultório). Abra o Claude Code nessa pasta, cole o prompt abaixo e, se possível, anexe os prints das seções da página de referência e a arte da Ellen (para a paleta).
+> **Como usar:** crie uma pasta para o projeto, coloque dentro dela uma subpasta `fotos/` com `ellen-hero.jpg` (foto principal) e `ellen-sobre.jpg` (foto da seção "Quem vai te atender") e as 4 fotos `consultorio-*.jpg` (galeria do consultório). Abra o Claude Code nessa pasta, cole o prompt abaixo e, se possível, anexe os prints das seções da página de referência e a arte da Ellen (para a paleta).
 
 ---
 
@@ -51,6 +51,7 @@ Layout por seção:
 - Sem animação de entrada nas seções: o único movimento automático da página são os anéis.
 
 ### 2. Regras gerais
+- **Centralização pontual (o resto fica alinhado à esquerda):** hero inteiro (etiqueta, título, texto, botão e selos); seção "Antes de mais nada" inteira, em uma coluna central; no Método, a etiqueta, o título e o parágrafo inicial; no Local de atendimento, o topo e a coluna com endereço, atendimento online e botão; nos Depoimentos, a etiqueta, o título, o texto inicial e o botão; no Sobre, a etiqueta, o título e os botões; no FAQ, a etiqueta, o título e as perguntas (com o "+" fixo à direita).
 - **Não use efeito hover em cards nem em itens que não tenham ação.** Hover só em botões, links e nas perguntas do FAQ.
 - Todos os botões de agendamento abrem o WhatsApp em nova aba:
   `https://wa.me/5561991481192?text=Ol%C3%A1.%20Gostaria%20de%20agendar%20uma%20consulta%20de%20hipnoterapia.`
@@ -104,7 +105,7 @@ Layout por seção:
 
 **Local de atendimento** (#local, logo antes dos Depoimentos, fundo branco):
 - Topo em duas colunas: à esquerda, com o texto centralizado na coluna, etiqueta "Local de atendimento", H2 "Um espaço pensado para você *desacelerar.*" e o parágrafo "Os atendimentos presenciais acontecem em Águas Claras, Brasília, num consultório tranquilo, reservado e acolhedor, preparado para que você se sinta à vontade desde o primeiro momento.". À direita, lista com linhas finas: (pino) **Ed. Le Quartier**: "Av. Pau Brasil, 10 - Águas Claras, Brasília - DF, 71926-000, Brasil", com o link "Ver no Google Maps"; (monitor) **Atendimento online**: "Com o mesmo cuidado e sigilo do presencial."; e o botão "Agendar minha consulta".
-- Abaixo, uma galeria em mosaico com 5 fotos de `fotos/`. No desktop, colunas 2.2fr 1fr 1fr 1fr e duas linhas de 265px: `consultorio-placa-mesa.jpg` grande na 1ª coluna (canto superior esquerdo com raio de 160px e a etiqueta "Águas Claras · Brasília"), `consultorio-sala.jpg` alta na 2ª, `consultorio-placa-porta.jpg` e `consultorio-poltronas.jpg` empilhadas na 3ª e `consultorio-mesa.jpg` alta na 4ª. No celular, 2 colunas: placa da mesa em largura total, depois sala (alta) ao lado de placa da porta + poltronas, e a mesa em largura total no fim.
+- Abaixo, uma galeria em mosaico com 4 fotos de `fotos/`. No desktop, colunas 2.2fr 1fr 1fr 1fr e duas linhas de 265px: `consultorio-placa-mesa.jpg` grande na 1ª coluna (canto superior esquerdo com raio de 160px e a etiqueta "Águas Claras · Brasília"), `consultorio-sala.jpg` alta na 2ª, e `consultorio-placa-porta.jpg` com `consultorio-poltronas.jpg` empilhadas na 3ª (colunas 2fr 1fr 1fr). No celular, 2 colunas: placa da mesa em largura total e, abaixo, a sala (alta) ao lado da placa da porta com as poltronas.
 
 **Depoimentos** (#depoimentos, mesma estrutura da referência, mantendo a linha "RELATOS ILUSTRATIVOS — CONTEÚDO TEMPORÁRIO"):
 - H2: "Pessoas que saíram do ciclo, *de verdade.*"
