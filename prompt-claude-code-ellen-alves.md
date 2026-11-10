@@ -147,3 +147,9 @@ Uma linguagem de movimento só: easing cubic-bezier(.22,1,.36,1), 180ms nos cont
 - Barra fixa "Agendar minha consulta" no celular, que aparece depois do hero e some quando outro botão de agendar está na tela ou perto do CTA final.
 - prefers-reduced-motion: tudo aparece de uma vez, sem animação; sem JavaScript, a página fica completa e o header sólido.
 
+### 6. Ajustes de harmonia
+- Local de atendimento: topo (etiqueta, título e texto) em uma coluna central; o endereço e o atendimento online ficam ABAIXO da galeria, em dois cartões lado a lado (fundo névoa, borda fina, ícone em cima, texto centralizado), com o botão "Agendar minha consulta" centralizado embaixo. No celular, os cartões empilham.
+- Quem vai te atender: parágrafos da Ellen justificados (text-align: justify, com hifenização), no desktop e no celular.
+- Método: a lista de 6 itens fica dentro de um painel centralizado (fundo névoa, borda fina, cantos de 20px), com linhas finas entre os itens e marcadores brancos.
+- Como funciona: os 8 itens viram cartões brancos com o marcador em cima e o texto centralizado, em 4 colunas no desktop e 2 colunas no tablet e no celular; leve elevação ao passar o mouse.
+
