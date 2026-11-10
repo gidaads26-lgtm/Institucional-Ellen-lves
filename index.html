@@ -351,7 +351,8 @@ h1{letter-spacing:-.015em}
 
 /* ---------- Header fixo que se transforma ao rolar ---------- */
 header{position:fixed;left:0;right:0;top:0;background:transparent;border-bottom:1px solid transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:border-color .4s var(--ease)}
-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(15,42,51,.86);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);opacity:0;transition:opacity .4s var(--ease)}
+header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(15,42,51,.86);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);opacity:1;transition:opacity .4s var(--ease)}
+.js header:not(.scrolled)::before{opacity:0}
 header.scrolled{border-bottom-color:rgba(140,199,190,.14)}
 header.scrolled::before{opacity:1}
 .nav{transition:height .4s var(--ease)}
@@ -426,7 +427,7 @@ header.scrolled .nav{height:70px}
 .js .hero .rings{opacity:0}
 .js .is-loaded .hero .rings{opacity:1;transition:opacity 2.2s ease .5s}
 .hero .arch{outline-color:rgba(140,199,190,.35)}
-.hero-photo .parallax{will-change:transform}
+.hero-photo.parallax{will-change:transform}
 
 /* ---------- Revelações ao rolar ---------- */
 .js [data-r]{opacity:0;transform:translateY(26px);transition:opacity var(--t-reveal) var(--ease),transform var(--t-reveal) var(--ease);transition-delay:var(--d,0s)}
@@ -448,7 +449,7 @@ header.scrolled .nav{height:70px}
 .seals span{display:block;text-align:center;line-height:1.55}
 .seals svg{display:inline-block;vertical-align:-2px;margin-right:8px}
 .intro .hl::after{content:"";position:absolute;left:10%;right:10%;bottom:-12px;height:1.5px;background:linear-gradient(90deg,transparent,var(--mar),transparent);transform:scaleX(0);transition:transform 1.2s var(--ease) .5s}
-.js .intro .hl.in::after,.no-js .intro .hl::after{transform:scaleX(1)}
+.js .intro .hl.in::after,html:not(.js) .intro .hl::after{transform:scaleX(1)}
 
 /* Galeria e cards: resposta ao toque/mouse */
 .gallery figure img{transition:transform 1.2s var(--ease)}
@@ -473,19 +474,26 @@ header.scrolled .nav{height:70px}
 /* ---------- Barra fixa de agendamento no celular ---------- */
 .m-cta{display:none}
 @media (max-width:900px){
-  .m-cta{display:block;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;transform:translateY(140%);opacity:0;transition:transform .55s var(--ease),opacity .3s ease;pointer-events:none}
-  .m-cta.show{transform:none;opacity:1;pointer-events:auto}
+  .m-cta{display:block;position:fixed;left:12px;right:12px;max-width:440px;margin:0 auto;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;transform:translateY(140%);opacity:0;visibility:hidden;transition:transform .55s var(--ease),opacity .3s ease,visibility 0s linear .55s;pointer-events:none}
+  .m-cta::before{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;z-index:-1;background:linear-gradient(to top,rgba(238,243,241,.92),rgba(238,243,241,0));pointer-events:none;opacity:0;transition:opacity .4s ease}
+  .m-cta.show::before{opacity:1}
+  .m-cta.show{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .55s var(--ease),opacity .3s ease,visibility 0s}
   .m-cta .btn{width:100%;background:var(--mar);color:var(--abismo);padding:16px 22px;box-shadow:0 18px 40px -12px rgba(15,42,51,.55),0 0 0 1px rgba(255,255,255,.25) inset}
   body.menu-open .m-cta{opacity:0;transform:translateY(140%)}
-  footer{padding-bottom:110px}
+  footer{padding-bottom:40px}
+  .foot-address{flex-direction:column;align-items:center;gap:6px}
+  .foot-address svg{margin-top:0}
+  .mobile-menu{align-items:stretch;text-align:center}
 }
+
+main section:not(.dark) :focus-visible{outline-color:var(--mar-forte)}
 
 /* ---------- Quem prefere menos movimento ---------- */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition-duration:.01ms !important;transition-delay:0s !important}
   .js [data-r],.js .hero [data-in],.js .hero .float-card,.js .hero .rings{opacity:1 !important;transform:none !important}
   .js [data-r="clip"],.js [data-r="arch"],.js .hero .arch{clip-path:none !important}
-  .js [data-r] img,.js .hero .arch img,.hero-photo .parallax{transform:none !important}
+  .js [data-r] img,.js .hero .arch img,.hero-photo.parallax{transform:none !important}
   .intro .hl::after{transform:scaleX(1)}
 }
 /* ajustes de encaixe */
@@ -764,13 +772,17 @@ Meu propósito é oferecer um espaço de escuta e acolhimento, onde você seja c
   const toggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
   function setMenu(open) {
+    const wasOpen = document.body.classList.contains("menu-open");
     document.body.classList.toggle("menu-open", open);
+    document.querySelectorAll("main, footer, .m-cta, .nav .brand").forEach(el => { el.inert = open; });
+    if (open) setTimeout(() => { const f = mobileMenu.querySelector("a"); if (f) f.focus({ preventScroll: true }); }, 200);
+    else if (wasOpen && mobileMenu.contains(document.activeElement)) toggle.focus({ preventScroll: true });
     toggle.setAttribute("aria-expanded", open);
     toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
   }
   toggle.addEventListener("click", () => setMenu(!document.body.classList.contains("menu-open")));
   mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-  document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && document.body.classList.contains("menu-open")) { setMenu(false); toggle.focus(); } });
   window.addEventListener("resize", () => { if (window.innerWidth > 900) setMenu(false); });
 
   // FAQ: uma pergunta aberta por vez
@@ -870,16 +882,27 @@ Meu propósito é oferecer um espaço de escuta e acolhimento, onde você seja c
       targets.forEach(el => el.classList.add("in"));
       if (hl) hl.classList.add("in");
     } else {
+      // elementos recortados (clip-path) são observados pelo elemento pai
+      const proxy = new Map();
+      const reveal = el => {
+        el.classList.add("in");
+        if (el.classList.contains("stat")) countUp(el.querySelector("b"));
+        // depois da revelação, devolve ao elemento os seus próprios efeitos de hover
+        setTimeout(() => { el.removeAttribute("data-r"); el.classList.remove("in"); el.style.removeProperty("--d"); }, 2200);
+      };
       const io = new IntersectionObserver(entries => {
         entries.forEach(en => {
           if (!en.isIntersecting) return;
-          const el = en.target;
-          el.classList.add("in");
-          if (el.classList.contains("stat")) countUp(el.querySelector("b"));
-          io.unobserve(el);
+          (proxy.get(en.target) || [en.target]).forEach(reveal);
+          io.unobserve(en.target);
         });
       }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-      targets.forEach(el => io.observe(el));
+      targets.forEach(el => {
+        const k = el.getAttribute("data-r");
+        const t = (k === "clip" || k === "arch") ? el.parentElement : el;
+        if (!proxy.has(t)) { proxy.set(t, []); io.observe(t); }
+        proxy.get(t).push(el);
+      });
       if (hl) io.observe(hl);
     }
 
@@ -889,13 +912,21 @@ Meu propósito é oferecer um espaço de escuta e acolhimento, onde você seja c
       const secIO = new IntersectionObserver(entries => {
         entries.forEach(en => {
           if (!en.isIntersecting) return;
-          const id = "#" + en.target.id;
-          navLinks.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === id));
+          const id = en.target.id ? "#" + en.target.id : "";
+          navLinks.forEach(a => a.classList.toggle("is-active", !!id && a.getAttribute("href") === id));
         });
       }, { rootMargin: "-45% 0px -50% 0px" });
-      ["metodo", "consulta", "depoimentos", "sobre"].forEach(id => {
-        const s = document.getElementById(id); if (s) secIO.observe(s);
-      });
+      document.querySelectorAll("main > section").forEach(s => secIO.observe(s));
+    }
+
+    // Barra de agendamento do celular some quando outro botão de agendar está na tela
+    const visibleCtas = new Set();
+    if ("IntersectionObserver" in window) {
+      const ctaIO = new IntersectionObserver(entries => {
+        entries.forEach(en => { en.isIntersecting ? visibleCtas.add(en.target) : visibleCtas.delete(en.target); });
+        requestAnimationFrame(onScroll);
+      }, { rootMargin: "0px 0px -90px 0px" });
+      document.querySelectorAll("main section:not(.hero) [data-wa]").forEach(b => ctaIO.observe(b));
     }
 
     // Rolagem: header, barra de progresso, profundidade da foto e barra de agendamento
@@ -911,7 +942,7 @@ Meu propósito é oferecer um espaço de escuta e acolhimento, onde você seja c
       if (mcta) {
         const pastHero = y > hero.offsetHeight * 0.75;
         const nearEnd = finalSec && finalSec.getBoundingClientRect().top < window.innerHeight * 0.9;
-        mcta.classList.toggle("show", pastHero && !nearEnd);
+        mcta.classList.toggle("show", pastHero && !nearEnd && visibleCtas.size === 0);
       }
       ticking = false;
     }

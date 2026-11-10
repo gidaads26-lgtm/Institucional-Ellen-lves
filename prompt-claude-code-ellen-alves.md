@@ -136,3 +136,14 @@ Layout por seção:
 
 ### 4. Entrega
 Ao terminar, abra o `index.html` num navegador headless (ou descreva como testar), confira desktop e celular e me diga o que ficou pendente.
+
+### 5. Camada premium de movimento (aplicada por último)
+Uma linguagem de movimento só: easing cubic-bezier(.22,1,.36,1), 180ms nos controles e cerca de 800ms nas revelações. Somente transform, opacity e clip-path.
+- Header fixo e transparente sobre o hero, que fica sólido com desfoque ao rolar, com uma barra fina de progresso de leitura (vidro-do-mar para lavanda) e o link da seção atual sublinhado.
+- Botões: leve elevação no hover, brilho que atravessa o botão, compressão ao clicar e sombra suave na cor do botão.
+- Celular: ícone do menu que vira X e menu em tela cheia revelado em círculo a partir do botão, com links grandes em Playfair entrando em sequência; Esc fecha, o foco fica preso no menu (inert no resto) e a página não rola por trás.
+- Hero: abertura em sequência (etiqueta, título, texto, botão e selos), foto em arco revelada de baixo para cima com leve zoom, card flutuante e anéis entrando depois; leve parallax da foto ao rolar.
+- Ao rolar: títulos, textos e listas sobem suavemente (grupos pequenos escalonados); fotos da galeria e foto do Sobre reveladas com recorte (observar o elemento pai, porque o Chrome ignora elementos totalmente recortados); números contam até o valor; linha que se desenha sob "É exatamente lá que a hipnoterapia atua.".
+- Barra fixa "Agendar minha consulta" no celular, que aparece depois do hero e some quando outro botão de agendar está na tela ou perto do CTA final.
+- prefers-reduced-motion: tudo aparece de uma vez, sem animação; sem JavaScript, a página fica completa e o header sólido.
+
