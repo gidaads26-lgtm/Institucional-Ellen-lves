@@ -1,6 +1,6 @@
 # Prompt para o Claude Code — Landing page Ellen Álves (Hipnoterapia / Ansiedade)
 
-> **Como usar:** crie uma pasta para o projeto, coloque dentro dela uma subpasta `fotos/` com `ellen-hero.jpg` (foto principal) e `ellen-sobre.jpg` (foto da seção "Quem vai te atender") e `consultorio.jpg` (foto do consultório). Abra o Claude Code nessa pasta, cole o prompt abaixo e, se possível, anexe os prints das seções da página de referência e a arte da Ellen (para a paleta).
+> **Como usar:** crie uma pasta para o projeto, coloque dentro dela uma subpasta `fotos/` com `ellen-hero.jpg` (foto principal) e `ellen-sobre.jpg` (foto da seção "Quem vai te atender") e as 5 fotos `consultorio-*.jpg` (galeria do consultório). Abra o Claude Code nessa pasta, cole o prompt abaixo e, se possível, anexe os prints das seções da página de referência e a arte da Ellen (para a paleta).
 
 ---
 
@@ -102,14 +102,9 @@ Layout por seção:
 - 8 itens em 2 colunas: Consulta de 1h a 1h30 · Anamnese aprofundada da sua história · Identificação da origem subconsciente do padrão · Avaliação clínica honesta · Direcionamento com um plano 100% personalizado · Espaço reservado pras suas dúvidas · 98% de eficácia comprovada · Sem fórmula genérica
 - Botão: "Agendar minha consulta"
 
-**Local de atendimento** (#local, nova seção logo antes dos Depoimentos, fundo branco):
-- Duas colunas: à esquerda, a foto `fotos/consultorio.jpg` (proporção 3:2, canto superior esquerdo bem arredondado, 200px, e os outros com 28px), com uma etiqueta escura sobre a foto: ícone de pino + "Brasília · DF". À direita, o texto.
-- Etiqueta: "Local de atendimento"
-- H2: "Um espaço pensado para você *desacelerar.*"
-- Parágrafo: "Os atendimentos presenciais acontecem em Brasília, num consultório tranquilo, reservado e acolhedor, preparado para que você se sinta à vontade desde o primeiro momento."
-- Lista com linhas finas: (pino) **Brasília – DF**: "Endereço em definição. O local exato é informado no agendamento." / (monitor) **Atendimento online**: "Com o mesmo cuidado e sigilo do presencial."
-- Botão: "Agendar minha consulta"
-- No celular, a foto vai acima do texto.
+**Local de atendimento** (#local, logo antes dos Depoimentos, fundo branco):
+- Topo em duas colunas: à esquerda, etiqueta "Local de atendimento", H2 "Um espaço pensado para você *desacelerar.*" e o parágrafo "Os atendimentos presenciais acontecem em Águas Claras, Brasília, num consultório tranquilo, reservado e acolhedor, preparado para que você se sinta à vontade desde o primeiro momento.". À direita, lista com linhas finas: (pino) **Ed. Le Quartier**: "Av. Pau Brasil, 10 - Águas Claras, Brasília - DF, 71926-000, Brasil", com o link "Ver no Google Maps"; (monitor) **Atendimento online**: "Com o mesmo cuidado e sigilo do presencial."; e o botão "Agendar minha consulta".
+- Abaixo, uma galeria em mosaico com 5 fotos de `fotos/`. No desktop, colunas 2.2fr 1fr 1fr 1fr e duas linhas de 265px: `consultorio-placa-mesa.jpg` grande na 1ª coluna (canto superior esquerdo com raio de 160px e a etiqueta "Águas Claras · Brasília"), `consultorio-sala.jpg` alta na 2ª, `consultorio-placa-porta.jpg` e `consultorio-poltronas.jpg` empilhadas na 3ª e `consultorio-mesa.jpg` alta na 4ª. No celular, 2 colunas: placa da mesa em largura total, depois sala (alta) ao lado de placa da porta + poltronas, e a mesa em largura total no fim.
 
 **Depoimentos** (#depoimentos, mesma estrutura da referência, mantendo a linha "RELATOS ILUSTRATIVOS — CONTEÚDO TEMPORÁRIO"):
 - H2: "Pessoas que saíram do ciclo, *de verdade.*"
@@ -136,7 +131,7 @@ Layout por seção:
 
 **CTA final**: etiqueta "Vagas limitadas por mês", H2 "Quebrar ciclos repetitivos começa quando você finalmente entende *de onde eles vêm.*", parágrafo: "Marque sua Consulta de Avaliação e descubra, com clareza, a raiz do padrão que te mantém presa. Comece hoje." e botão "Agendar minha consulta".
 
-**Rodapé**: botão do Instagram, links Método e Perguntas **centralizados** numa linha, e abaixo, também centralizado: "© 2026 Ellen Álves — Consulta de Avaliação em Hipnoterapia".
+**Rodapé**: botão do Instagram, links Método e Perguntas **centralizados** numa linha, e abaixo, também centralizado: "© 2026 Ellen Álves — Consulta de Avaliação em Hipnoterapia". Abaixo dos links, o endereço com ícone de pino: "Ed. Le Quartier - Av. Pau Brasil, 10 - Águas Claras, Brasília - DF, 71926-000, Brasil".
 
 ### 4. Entrega
 Ao terminar, abra o `index.html` num navegador headless (ou descreva como testar), confira desktop e celular e me diga o que ficou pendente.
