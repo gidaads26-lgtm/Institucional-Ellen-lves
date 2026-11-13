@@ -154,3 +154,15 @@ Uma linguagem de movimento só: easing cubic-bezier(.22,1,.36,1), 180ms nos cont
 - Como funciona: os 8 itens viram cartões brancos com o marcador em cima e o texto centralizado, em 4 colunas no desktop e 2 colunas no tablet e no celular; leve elevação ao passar o mouse.
 - Hero: sem o card flutuante sobre a foto; a foto em arco fica limpa, só com o contorno e os anéis.
 - Removidos: os dois selos com ✓ abaixo do botão do hero e as três pílulas da seção Quem vai te atender.
+
+### 7. Efeitos (mesma linguagem do site da Dionea Oliveira)
+Classe `.motion` no <html> só quando não há prefers-reduced-motion. Easing cubic-bezier(.22,1,.36,1).
+- Títulos (h1 e todos os h2): o texto é separado em palavras por JS; cada palavra sobe de uma máscara (translateY 110% → 0, 45 a 55ms entre palavras) e as palavras em itálico aparecem uma a uma com clip-path da esquerda para a direita, como escrita. O h1 anima ao carregar e os h2 ao entrarem na tela.
+- Botões: um preenchimento oval sobe por baixo e sai por cima (span .btn__fill), enquanto o texto rola para cima (texto duplicado em .btn__roll). Nos botões escuros o preenchimento é #2F6F6A; nos claros, #E4F3F0. No celular, cada botão faz esse movimento sozinho uma vez quando aparece na tela. Os botões do hero e do CTA final têm um brilho que atravessa a cada 6s.
+- Cabeçalho: some ao descer (depois de 320px) e volta ao subir; barra de progresso fixa no topo da tela; o sublinhado dos links entra pela esquerda e sai pela direita.
+- Menu do celular: os links sobem de uma máscara em sequência e o fundo tem um brilho radial suave no canto.
+- Hero: o contorno do arco é desenhado em SVG (stroke-dashoffset) depois que a foto aparece, com um pequeno ponto que surge no contorno; partículas em vidro-do-mar sobem devagar no fundo (canvas, pausado fora da tela); a foto sobe levemente ao rolar (parallax -0.08).
+- Rolagem: cards (Como funciona, Depoimentos e Local) entram subindo com leve escala (.97 → 1); os itens da lista do Método deslizam da direita e o marcador entra da esquerda; as fotos da galeria e do Sobre têm parallax de ±4% dentro da moldura.
+- CTA final: brilho radial que segue o ponteiro e um filete interno a 16px da borda.
+- WhatsApp flutuante: botão redondo no canto inferior direito (azul-abismo, ícone vidro-do-mar) que aparece depois do hero, com um anel pulsando; substitui a barra fixa do celular.
+
