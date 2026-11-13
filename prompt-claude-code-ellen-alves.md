@@ -153,3 +153,4 @@ Uma linguagem de movimento só: easing cubic-bezier(.22,1,.36,1), 180ms nos cont
 - Método: a lista de 6 itens fica dentro de um painel centralizado (fundo névoa, borda fina, cantos de 20px), com linhas finas entre os itens e marcadores brancos.
 - Como funciona: os 8 itens viram cartões brancos com o marcador em cima e o texto centralizado, em 4 colunas no desktop e 2 colunas no tablet e no celular; leve elevação ao passar o mouse.
 - Hero: sem o card flutuante sobre a foto; a foto em arco fica limpa, só com o contorno e os anéis.
+- Removidos: os dois selos com ✓ abaixo do botão do hero e as três pílulas da seção Quem vai te atender.
